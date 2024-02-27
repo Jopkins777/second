@@ -2,8 +2,7 @@ pr:
   - master
 
 # There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI.
-# https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
-trigger: none
+
 
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
@@ -29,7 +28,6 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - template: download-vr-cli.yml
-
       - bash: |
           postPolicy="true";
           response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
