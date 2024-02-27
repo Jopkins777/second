@@ -1,8 +1,8 @@
 pr: none
 trigger: none
 
-# Customize build number to include major version
-# Example: v8_20201022.1
+# Customize build number to include major versions
+# Example: v8_20201024.13
 name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
@@ -14,7 +14,7 @@ variables:
     value: production,externalfacing
 
 schedules:
-  # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
+  # minute 1, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
   - cron: '0 7 * * 1-5'
     # will be 12am during daylight savings time unless trigger is updated
